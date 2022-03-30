@@ -99,11 +99,11 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(3, 3, -3);
 scene.add(camera);
 
-const ambientLight = new THREE.AmbientLight('#fff', 0.5);
+const ambientLight = new THREE.AmbientLight('#b9d5ff', 0.12);
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight('#fff', 0.5);
+const directionalLight = new THREE.DirectionalLight('#b9d5ff', 0.12);
 directionalLight.position.set(4, 5, -2);
 gui.add(directionalLight, 'intensity').min(0).max(1).step(0.001);
 gui.add(directionalLight.position, 'x').min(-5).max(5).step(0.001);
