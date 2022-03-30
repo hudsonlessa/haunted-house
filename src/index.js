@@ -25,6 +25,8 @@ const floorMaterial = new THREE.MeshBasicMaterial({
   color: '#999',
 });
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.position.y = 0;
+floor.rotation.x = -Math.PI * 0.5;
 
 const camera = new THREE.PerspectiveCamera(
   75,
