@@ -122,6 +122,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas,
 });
 renderer.render(scene, camera);
+renderer.setClearColor('#262837');
 
 const updateRendererSizeAndPixelRatio = () => {
   renderer.setSize(sizes.width, sizes.height);
