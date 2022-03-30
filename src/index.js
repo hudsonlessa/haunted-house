@@ -13,6 +13,13 @@ const sizes = {
 
 const scene = new THREE.Scene();
 
+const camera = new THREE.PerspectiveCamera(
+  75,
+  sizes.width / sizes.height,
+  0.1,
+  100
+);
+
 const defaultCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 const defaultCubeMaterial = new THREE.MeshBasicMaterial({ color: '#f00' });
 const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
