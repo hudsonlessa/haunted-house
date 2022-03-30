@@ -18,6 +18,7 @@ const scene = new THREE.Scene();
 const defaultCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 const defaultCubeMaterial = new THREE.MeshStandardMaterial({ color: '#999' });
 const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
+defaultCube.position.y = 1;
 scene.add(defaultCube);
 
 const floorGeometry = new THREE.PlaneGeometry(20, 20);
