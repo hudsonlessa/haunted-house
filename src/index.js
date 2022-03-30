@@ -30,6 +30,10 @@ scene.add(floor);
 const house = new THREE.Group();
 scene.add(house);
 
+const wallsGeometry = new THREE.BoxGeometry(1, 1, 1);
+const wallsMaterial = new THREE.MeshStandardMaterial();
+const walls = new THREE.Mesh(wallsGeometry, wallsMaterial);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
