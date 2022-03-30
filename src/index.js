@@ -46,6 +46,8 @@ house.add(roof);
 const doorGeometry = new THREE.PlaneBufferGeometry(2, 2);
 const doorMaterial = new THREE.MeshStandardMaterial({ color: '#aa7b7b' });
 const door = new THREE.Mesh(doorGeometry, doorMaterial);
+door.position.y = 1;
+door.position.z = 2 + 0.01;
 house.add(door);
 
 const camera = new THREE.PerspectiveCamera(
