@@ -16,7 +16,7 @@ const sizes = {
 const scene = new THREE.Scene();
 
 const defaultCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-const defaultCubeMaterial = new THREE.MeshBasicMaterial({ color: "#999" });
+const defaultCubeMaterial = new THREE.MeshBasicMaterial({ color: '#999' });
 const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
 scene.add(defaultCube);
 
@@ -40,6 +40,27 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.render(scene, camera);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+
+window.addEventListener('resize', () => {
+  const updateSizes = () => {
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
+  };
+
+  const updateCameraAspectRatio = () => {
+    camera.aspect = sizes.width / sizes.height;
+    camera.updateProjectionMatrix();
+  };
+
+  const updateRendererSizeAndPixelRatio = () => {
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  };
+
+  updateSizes();
+  updateCameraAspectRatio();
+  updateRendererSizeAndPixelRatio();
+});
 
 const tick = () => {
   renderer.render(scene, camera);
