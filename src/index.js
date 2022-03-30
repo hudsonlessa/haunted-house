@@ -11,6 +11,8 @@ body.appendChild(canvas);
 
 const gui = new GUI();
 
+const textureLoader = new THREE.TextureLoader();
+
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -42,8 +44,6 @@ const roof = new THREE.Mesh(roofGeometry, roofMaterial);
 roof.position.y = 2.5 + 1 / 2;
 roof.rotation.y = Math.PI / 4;
 house.add(roof);
-
-const textureLoader = new THREE.TextureLoader();
 
 const doorGeometry = new THREE.PlaneBufferGeometry(2.2, 2.2, 100, 100);
 doorGeometry.setAttribute(
