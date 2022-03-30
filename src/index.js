@@ -13,6 +13,11 @@ const sizes = {
 
 const scene = new THREE.Scene();
 
+const defaultCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+const defaultCubeMaterial = new THREE.MeshBasicMaterial({ color: '#f00' });
+const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
+scene.add(defaultCube);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
@@ -20,11 +25,6 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 scene.add(camera);
-
-const defaultCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-const defaultCubeMaterial = new THREE.MeshBasicMaterial({ color: '#f00' });
-const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
-scene.add(defaultCube);
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
