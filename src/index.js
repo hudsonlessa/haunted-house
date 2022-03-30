@@ -33,6 +33,7 @@ scene.add(house);
 const wallsGeometry = new THREE.BoxGeometry(1, 1, 1);
 const wallsMaterial = new THREE.MeshStandardMaterial({ color: '#ac8e82' });
 const walls = new THREE.Mesh(wallsGeometry, wallsMaterial);
+house.add(walls);
 
 const camera = new THREE.PerspectiveCamera(
   75,
