@@ -1,5 +1,6 @@
 import './styles.css';
 
+import GUI from 'lil-gui';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -7,6 +8,8 @@ const { body } = document;
 const canvas = document.createElement('canvas');
 canvas.classList.add('webgl');
 body.appendChild(canvas);
+
+const gui = new GUI();
 
 const sizes = {
   width: window.innerWidth,
