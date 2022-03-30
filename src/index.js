@@ -20,7 +20,7 @@ const scene = new THREE.Scene();
 
 const floorGeometry = new THREE.PlaneGeometry(20, 20);
 const floorMaterial = new THREE.MeshStandardMaterial({
-  color: '#999',
+  color: '#a9c388',
 });
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 floor.position.y = 0;
