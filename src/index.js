@@ -33,7 +33,27 @@ const house = new THREE.Group();
 scene.add(house);
 
 const wallsGeometry = new THREE.BoxGeometry(4, 2.5, 4);
-const wallsMaterial = new THREE.MeshStandardMaterial({ color: '#ac8e82' });
+wallsGeometry.setAttribute(
+  'uv2',
+  new THREE.Float32BufferAttribute(wallsGeometry.attributes.uv.array, 2)
+);
+
+const bricksColorTexture = textureLoader.load('./textures/bricks/color.jpg');
+const bricksAmbientOcclusionTexture = textureLoader.load(
+  './textures/bricks/ambientOcclusion.jpg'
+);
+const bricksNormalTexture = textureLoader.load('./textures/bricks/normal.jpg');
+const bricksRoughnessTexture = textureLoader.load(
+  './textures/bricks/roughness.jpg'
+);
+
+const wallsMaterial = new THREE.MeshStandardMaterial({
+  map: bricksColorTexture,
+  aoMap: bricksAmbientOcclusionTexture,
+  normalMap: bricksNormalTexture,
+  roughnessMap: bricksRoughnessTexture,
+});
+
 const walls = new THREE.Mesh(wallsGeometry, wallsMaterial);
 walls.position.y = 2.5 / 2;
 house.add(walls);
