@@ -26,6 +26,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
+camera.position.x = 3;
+camera.position.y = 3;
 camera.position.z = -3;
 camera.lookAt(defaultCube.position);
 scene.add(camera);
