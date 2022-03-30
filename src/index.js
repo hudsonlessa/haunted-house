@@ -47,6 +47,7 @@ scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight('#fff', 0.5);
 directionalLight.position.set(4, 5, -2);
+scene.add(directionalLight);
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
