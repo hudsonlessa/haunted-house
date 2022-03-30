@@ -28,6 +28,7 @@ floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
 const house = new THREE.Group();
+scene.add(house);
 
 const camera = new THREE.PerspectiveCamera(
   75,
