@@ -40,6 +40,7 @@ const roofGeometry = new THREE.ConeGeometry(3.5, 1, 4);
 const roofMaterial = new THREE.MeshStandardMaterial({ color: '#b35f45' });
 const roof = new THREE.Mesh(roofGeometry, roofMaterial);
 roof.position.y = 2.5 + 1 / 2;
+roof.rotation.y = Math.PI / 4;
 house.add(roof);
 
 const camera = new THREE.PerspectiveCamera(
