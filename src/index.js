@@ -70,6 +70,9 @@ bush4.scale.set(0.15, 0.15, 0.15);
 
 house.add(bush1, bush2, bush3, bush4);
 
+const graves = new THREE.Group();
+scene.add(graves);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
