@@ -43,6 +43,10 @@ roof.position.y = 2.5 + 1 / 2;
 roof.rotation.y = Math.PI / 4;
 house.add(roof);
 
+const doorGeometry = new THREE.PlaneBufferGeometry(2, 2);
+const doorMaterial = new THREE.MeshStandardMaterial({ color: '#aa7b7b' });
+const door = new THREE.Mesh(doorGeometry, doorMaterial);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
