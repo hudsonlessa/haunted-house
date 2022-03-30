@@ -41,6 +41,8 @@ camera.position.z = -3;
 camera.lookAt(defaultCube.position);
 scene.add(camera);
 
+const ambientLight = new THREE.AmbientLight('#fff', 0.5);
+
 const renderer = new THREE.WebGLRenderer({
   canvas,
 });
