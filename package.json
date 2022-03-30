@@ -2,7 +2,7 @@
   "name": "haunted-house",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/hudsonlessa/threejs-boilerplate.git",
+  "repository": "https://github.com/hudsonlessa/haunted-house.git",
   "author": "Hudson Lessa",
   "license": "MIT",
   "scripts": {
