@@ -52,9 +52,14 @@ scene.add(directionalLight);
 const renderer = new THREE.WebGLRenderer({
   canvas,
 });
-renderer.setSize(sizes.width, sizes.height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.render(scene, camera);
+
+const updateRendererSizeAndPixelRatio = () => {
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+};
+
+updateRendererSizeAndPixelRatio();
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -67,11 +72,6 @@ window.addEventListener('resize', () => {
   const updateCameraAspectRatio = () => {
     camera.aspect = sizes.width / sizes.height;
     camera.updateProjectionMatrix();
-  };
-
-  const updateRendererSizeAndPixelRatio = () => {
-    renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   };
 
   updateSizes();
