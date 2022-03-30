@@ -115,6 +115,9 @@ const doorLight = new THREE.PointLight('#ff7d46', 1, 7);
 doorLight.position.set(0, 2.2, 2.7);
 house.add(doorLight);
 
+const fog = new THREE.Fog('#262837', 1, 15);
+scene.fog = fog;
+
 const renderer = new THREE.WebGLRenderer({
   canvas,
 });
