@@ -20,6 +20,12 @@ const defaultCubeMaterial = new THREE.MeshBasicMaterial({ color: '#999' });
 const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
 scene.add(defaultCube);
 
+const floorGeometry = new THREE.PlaneGeometry(20, 20);
+const floorMaterial = new THREE.MeshBasicMaterial({
+  color: '#999',
+});
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
