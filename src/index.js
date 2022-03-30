@@ -53,6 +53,7 @@ house.add(door);
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' });
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
+house.add(bush1);
 
 const camera = new THREE.PerspectiveCamera(
   75,
