@@ -15,12 +15,6 @@ const sizes = {
 
 const scene = new THREE.Scene();
 
-const defaultCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-const defaultCubeMaterial = new THREE.MeshStandardMaterial({ color: '#999' });
-const defaultCube = new THREE.Mesh(defaultCubeGeometry, defaultCubeMaterial);
-defaultCube.position.y = 1;
-scene.add(defaultCube);
-
 const floorGeometry = new THREE.PlaneGeometry(20, 20);
 const floorMaterial = new THREE.MeshStandardMaterial({
   color: '#999',
@@ -37,7 +31,6 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 camera.position.set(3, 3, -3);
-camera.lookAt(defaultCube.position);
 scene.add(camera);
 
 const ambientLight = new THREE.AmbientLight('#fff', 0.5);
