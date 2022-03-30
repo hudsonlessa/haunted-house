@@ -38,3 +38,9 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.render(scene, camera);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+
+const tick = () => {
+  requestAnimationFrame(tick);
+};
+
+tick();
