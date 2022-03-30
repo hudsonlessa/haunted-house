@@ -37,6 +37,7 @@ camera.position.set(3, 3, -3);
 scene.add(camera);
 
 const ambientLight = new THREE.AmbientLight('#fff', 0.5);
+gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight('#fff', 0.5);
