@@ -29,3 +29,4 @@ scene.add(defaultCube);
 const renderer = new THREE.WebGLRenderer({
   canvas,
 });
+renderer.setSize(sizes.width, sizes.height);
