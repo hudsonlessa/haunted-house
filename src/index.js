@@ -19,6 +19,7 @@ const sizes = {
 };
 
 const scene = new THREE.Scene();
+scene.matrixAutoUpdate = false;
 
 const floorGeometry = new THREE.PlaneBufferGeometry(20, 20);
 floorGeometry.setAttribute(
@@ -60,12 +61,15 @@ const floorMaterial = new THREE.MeshStandardMaterial({
 });
 
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.matrixAutoUpdate = false;
 floor.position.y = 0;
 floor.rotation.x = -Math.PI * 0.5;
 floor.receiveShadow = true;
+floor.updateMatrix();
 scene.add(floor);
 
 const house = new THREE.Group();
+house.matrixAutoUpdate = false;
 scene.add(house);
 
 const wallsGeometry = new THREE.BoxBufferGeometry(4, 2.5, 4);
@@ -93,16 +97,20 @@ const wallsMaterial = new THREE.MeshStandardMaterial({
 });
 
 const walls = new THREE.Mesh(wallsGeometry, wallsMaterial);
+walls.matrixAutoUpdate = false;
 walls.position.y = 2.5 / 2;
 walls.castShadow = true;
+walls.updateMatrix();
 house.add(walls);
 
 const roofGeometry = new THREE.ConeBufferGeometry(3.5, 1, 4);
 const roofMaterial = new THREE.MeshStandardMaterial({ color: '#b35f45' });
 roofMaterial.color.convertSRGBToLinear();
 const roof = new THREE.Mesh(roofGeometry, roofMaterial);
+roof.matrixAutoUpdate = false;
 roof.position.y = 2.5 + 1 / 2;
 roof.rotation.y = Math.PI / 4;
+roof.updateMatrix();
 house.add(roof);
 
 const doorGeometry = new THREE.PlaneBufferGeometry(2.2, 2.2, 100, 100);
@@ -140,36 +148,47 @@ const doorMaterial = new THREE.MeshStandardMaterial({
 });
 
 const door = new THREE.Mesh(doorGeometry, doorMaterial);
+door.matrixAutoUpdate = false;
 door.position.y = 1;
 door.position.z = 2 + 0.01;
+door.updateMatrix();
 house.add(door);
 
 const bushGeometry = new THREE.SphereBufferGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' });
 bushMaterial.color.convertSRGBToLinear();
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush1.matrixAutoUpdate = false;
 bush1.position.set(0.8, 0.2, 2.2);
 bush1.scale.set(0.5, 0.5, 0.5);
 bush1.castShadow = true;
+bush1.updateMatrix();
 
 const bush2 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush2.matrixAutoUpdate = false;
 bush2.position.set(1.4, 0.1, 2.1);
 bush2.scale.set(0.25, 0.25, 0.25);
 bush2.castShadow = true;
+bush2.updateMatrix();
 
 const bush3 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush3.matrixAutoUpdate = false;
 bush3.position.set(-0.8, 0.1, 2.2);
 bush3.scale.set(0.4, 0.4, 0.4);
 bush3.castShadow = true;
+bush3.updateMatrix();
 
 const bush4 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush4.matrixAutoUpdate = false;
 bush4.position.set(-1, 0.05, 2.6);
 bush4.scale.set(0.15, 0.15, 0.15);
 bush4.castShadow = true;
+bush4.updateMatrix();
 
 house.add(bush1, bush2, bush3, bush4);
 
 const graves = new THREE.Group();
+graves.matrixAutoUpdate = false;
 scene.add(graves);
 
 const graveGeometry = new THREE.BoxBufferGeometry(0.6, 0.8, 0.2);
@@ -184,10 +203,12 @@ for (let i = 0; i < 50; i += 1) {
   const z = Math.cos(angle) * radius;
 
   const grave = new THREE.Mesh(graveGeometry, graveMaterial);
+  grave.matrixAutoUpdate = false;
   grave.position.set(x, 0.3, z);
   grave.rotation.y = (Math.random() - 0.5) * 0.4;
   grave.rotation.z = (Math.random() - 0.5) * 0.4;
   grave.castShadow = true;
+  grave.updateMatrix();
   graves.add(grave);
 }
 
@@ -221,12 +242,15 @@ camera.position.set(3, 3, -3);
 scene.add(camera);
 
 const ambientLight = new THREE.AmbientLight('#b9d5ff', 0.12);
+ambientLight.matrixAutoUpdate = false;
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
 scene.add(ambientLight);
 
 const moonLight = new THREE.DirectionalLight('#b9d5ff', 0.12);
+moonLight.matrixAutoUpdate = false;
 moonLight.position.set(4, 5, -2);
 moonLight.castShadow = true;
+moonLight.updateMatrix();
 gui.add(moonLight, 'intensity').min(0).max(1).step(0.001);
 gui.add(moonLight.position, 'x').min(-5).max(5).step(0.001);
 gui.add(moonLight.position, 'y').min(-5).max(5).step(0.001);
@@ -234,13 +258,16 @@ gui.add(moonLight.position, 'z').min(-5).max(5).step(0.001);
 scene.add(moonLight);
 
 const doorLight = new THREE.PointLight('#ff7d46', 5, 7);
+doorLight.matrixAutoUpdate = false;
 doorLight.position.set(0, 2.2, 2.7);
 doorLight.shadow.mapSize.width = 256;
 doorLight.shadow.mapSize.height = 256;
 doorLight.shadow.camera.far = 7;
+doorLight.updateMatrix();
 house.add(doorLight);
 
 const fog = new THREE.Fog('#262837', 1, 15);
+fog.matrixAutoUpdate = false;
 scene.fog = fog;
 
 const renderer = new THREE.WebGLRenderer({
