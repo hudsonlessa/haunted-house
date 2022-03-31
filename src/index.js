@@ -99,6 +99,7 @@ house.add(walls);
 
 const roofGeometry = new THREE.ConeBufferGeometry(3.5, 1, 4);
 const roofMaterial = new THREE.MeshStandardMaterial({ color: '#b35f45' });
+roofMaterial.color.convertSRGBToLinear();
 const roof = new THREE.Mesh(roofGeometry, roofMaterial);
 roof.position.y = 2.5 + 1 / 2;
 roof.rotation.y = Math.PI / 4;
@@ -145,6 +146,7 @@ house.add(door);
 
 const bushGeometry = new THREE.SphereBufferGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' });
+bushMaterial.color.convertSRGBToLinear();
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush1.position.set(0.8, 0.2, 2.2);
 bush1.scale.set(0.5, 0.5, 0.5);
@@ -172,6 +174,7 @@ scene.add(graves);
 
 const graveGeometry = new THREE.BoxBufferGeometry(0.6, 0.8, 0.2);
 const graveMaterial = new THREE.MeshStandardMaterial({ color: '#b2b6b1' });
+graveMaterial.color.convertSRGBToLinear();
 
 for (let i = 0; i < 50; i += 1) {
   const angle = Math.random() * Math.PI * 2;
