@@ -21,9 +21,43 @@ const sizes = {
 const scene = new THREE.Scene();
 
 const floorGeometry = new THREE.PlaneGeometry(20, 20);
+floorGeometry.setAttribute(
+  'uv2',
+  new THREE.Float32BufferAttribute(floorGeometry.attributes.uv.array, 2)
+);
+
+const grassColorTexture = textureLoader.load('./textures/grass/color.jpg');
+const grassAmbientOcclusionTexture = textureLoader.load(
+  './textures/grass/ambientOcclusion.jpg'
+);
+const grassNormalTexture = textureLoader.load('./textures/grass/normal.jpg');
+const grassRoughnessTexture = textureLoader.load(
+  './textures/grass/roughness.jpg'
+);
+
+grassColorTexture.repeat.set(8, 8);
+grassColorTexture.wrapS = THREE.RepeatWrapping;
+grassColorTexture.wrapT = THREE.RepeatWrapping;
+
+grassAmbientOcclusionTexture.repeat.set(8, 8);
+grassAmbientOcclusionTexture.wrapS = THREE.RepeatWrapping;
+grassAmbientOcclusionTexture.wrapT = THREE.RepeatWrapping;
+
+grassNormalTexture.repeat.set(8, 8);
+grassNormalTexture.wrapS = THREE.RepeatWrapping;
+grassNormalTexture.wrapT = THREE.RepeatWrapping;
+
+grassRoughnessTexture.repeat.set(8, 8);
+grassRoughnessTexture.wrapS = THREE.RepeatWrapping;
+grassRoughnessTexture.wrapT = THREE.RepeatWrapping;
+
 const floorMaterial = new THREE.MeshStandardMaterial({
-  color: '#a9c388',
+  map: grassColorTexture,
+  aoMap: grassAmbientOcclusionTexture,
+  normalMap: grassNormalTexture,
+  roughnessMap: grassRoughnessTexture,
 });
+
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 floor.position.y = 0;
 floor.rotation.x = -Math.PI * 0.5;
