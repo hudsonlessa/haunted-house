@@ -248,6 +248,7 @@ const renderer = new THREE.WebGLRenderer({
   powerPreference: 'high-performance',
   antialias: true,
 });
+renderer.physicallyCorrectLights = true;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.render(scene, camera);
