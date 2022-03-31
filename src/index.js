@@ -233,7 +233,7 @@ gui.add(moonLight.position, 'y').min(-5).max(5).step(0.001);
 gui.add(moonLight.position, 'z').min(-5).max(5).step(0.001);
 scene.add(moonLight);
 
-const doorLight = new THREE.PointLight('#ff7d46', 1, 7);
+const doorLight = new THREE.PointLight('#ff7d46', 5, 7);
 doorLight.position.set(0, 2.2, 2.7);
 doorLight.shadow.mapSize.width = 256;
 doorLight.shadow.mapSize.height = 256;
