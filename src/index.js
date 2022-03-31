@@ -38,6 +38,7 @@ const grassRoughnessTexture = textureLoader.load(
 grassColorTexture.repeat.set(8, 8);
 grassColorTexture.wrapS = THREE.RepeatWrapping;
 grassColorTexture.wrapT = THREE.RepeatWrapping;
+grassColorTexture.encoding = THREE.sRGBEncoding;
 
 grassAmbientOcclusionTexture.repeat.set(8, 8);
 grassAmbientOcclusionTexture.wrapS = THREE.RepeatWrapping;
@@ -82,6 +83,8 @@ const bricksRoughnessTexture = textureLoader.load(
   './textures/bricks/roughness.jpg'
 );
 
+bricksColorTexture.encoding = THREE.sRGBEncoding;
+
 const wallsMaterial = new THREE.MeshStandardMaterial({
   map: bricksColorTexture,
   aoMap: bricksAmbientOcclusionTexture,
@@ -120,6 +123,8 @@ const doorMetalnessTexture = textureLoader.load(
 const doorRoughnessTexture = textureLoader.load(
   './textures/door/roughness.jpg'
 );
+
+doorColorTexture.encoding = THREE.sRGBEncoding;
 
 const doorMaterial = new THREE.MeshStandardMaterial({
   map: doorColorTexture,
