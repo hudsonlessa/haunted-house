@@ -245,6 +245,7 @@ scene.fog = fog;
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
+  powerPreference: 'high-performance',
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
