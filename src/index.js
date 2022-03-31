@@ -185,10 +185,22 @@ for (let i = 0; i < 50; i += 1) {
 
 const ghost1 = new THREE.PointLight('#f0f', 2, 3);
 ghost1.castShadow = true;
+ghost1.shadow.mapSize.width = 256;
+ghost1.shadow.mapSize.height = 256;
+ghost1.shadow.camera.far = 7;
+
 const ghost2 = new THREE.PointLight('#0ff', 2, 3);
 ghost2.castShadow = true;
+ghost2.shadow.mapSize.width = 256;
+ghost2.shadow.mapSize.height = 256;
+ghost2.shadow.camera.far = 7;
+
 const ghost3 = new THREE.PointLight('#ff0', 2, 3);
 ghost3.castShadow = true;
+ghost3.shadow.mapSize.width = 256;
+ghost3.shadow.mapSize.height = 256;
+ghost3.shadow.camera.far = 7;
+
 scene.add(ghost1, ghost2, ghost3);
 
 const camera = new THREE.PerspectiveCamera(
@@ -215,6 +227,9 @@ scene.add(moonLight);
 
 const doorLight = new THREE.PointLight('#ff7d46', 1, 7);
 doorLight.position.set(0, 2.2, 2.7);
+doorLight.shadow.mapSize.width = 256;
+doorLight.shadow.mapSize.height = 256;
+doorLight.shadow.camera.far = 7;
 house.add(doorLight);
 
 const fog = new THREE.Fog('#262837', 1, 15);
@@ -224,6 +239,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas,
 });
 renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.render(scene, camera);
 renderer.setClearColor('#262837');
 
