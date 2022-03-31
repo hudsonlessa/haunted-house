@@ -176,6 +176,11 @@ for (let i = 0; i < 50; i += 1) {
   graves.add(grave);
 }
 
+const ghost1 = new THREE.PointLight('#f0f', 2, 3);
+const ghost2 = new THREE.PointLight('#0ff', 2, 3);
+const ghost3 = new THREE.PointLight('#ff0', 2, 3);
+scene.add(ghost1, ghost2, ghost3);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
@@ -235,7 +240,31 @@ window.addEventListener('resize', () => {
   updateRendererSizeAndPixelRatio();
 });
 
+const clock = new THREE.Clock();
+
+const moveGhosts = (elapsedTime) => {
+  const ghost1Angle = elapsedTime * 0.5;
+  ghost1.position.x = Math.cos(ghost1Angle) * 4;
+  ghost1.position.y = Math.sin(elapsedTime * 3);
+  ghost1.position.z = Math.sin(ghost1Angle) * 4;
+
+  const ghost2Angle = -elapsedTime * 0.25;
+  ghost2.position.x = Math.cos(ghost2Angle) * 5;
+  ghost2.position.y = Math.sin(elapsedTime * 4) + Math.sin(elapsedTime * 2.5);
+  ghost2.position.z = Math.sin(ghost2Angle) * 5;
+
+  const ghost3Angle = -elapsedTime * 0.2;
+  ghost3.position.x =
+    Math.cos(ghost3Angle) * (7 + Math.sin(elapsedTime * 0.35));
+  ghost3.position.y = Math.sin(elapsedTime * 5) + Math.sin(elapsedTime * 2);
+  ghost3.position.z = Math.sin(ghost3Angle) * (7 + Math.sin(elapsedTime * 0.5));
+};
+
 const tick = () => {
+  const elapsedTime = clock.getElapsedTime();
+
+  moveGhosts(elapsedTime);
+
   renderer.render(scene, camera);
 
   requestAnimationFrame(tick);
