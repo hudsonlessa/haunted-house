@@ -61,6 +61,7 @@ const floorMaterial = new THREE.MeshStandardMaterial({
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 floor.position.y = 0;
 floor.rotation.x = -Math.PI * 0.5;
+floor.receiveShadow = true;
 scene.add(floor);
 
 const house = new THREE.Group();
@@ -90,6 +91,7 @@ const wallsMaterial = new THREE.MeshStandardMaterial({
 
 const walls = new THREE.Mesh(wallsGeometry, wallsMaterial);
 walls.position.y = 2.5 / 2;
+walls.castShadow = true;
 house.add(walls);
 
 const roofGeometry = new THREE.ConeGeometry(3.5, 1, 4);
@@ -141,18 +143,22 @@ const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' });
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush1.position.set(0.8, 0.2, 2.2);
 bush1.scale.set(0.5, 0.5, 0.5);
+bush1.castShadow = true;
 
 const bush2 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush2.position.set(1.4, 0.1, 2.1);
 bush2.scale.set(0.25, 0.25, 0.25);
+bush2.castShadow = true;
 
 const bush3 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush3.position.set(-0.8, 0.1, 2.2);
 bush3.scale.set(0.4, 0.4, 0.4);
+bush3.castShadow = true;
 
 const bush4 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush4.position.set(-1, 0.05, 2.6);
 bush4.scale.set(0.15, 0.15, 0.15);
+bush4.castShadow = true;
 
 house.add(bush1, bush2, bush3, bush4);
 
@@ -173,12 +179,16 @@ for (let i = 0; i < 50; i += 1) {
   grave.position.set(x, 0.3, z);
   grave.rotation.y = (Math.random() - 0.5) * 0.4;
   grave.rotation.z = (Math.random() - 0.5) * 0.4;
+  grave.castShadow = true;
   graves.add(grave);
 }
 
 const ghost1 = new THREE.PointLight('#f0f', 2, 3);
+ghost1.castShadow = true;
 const ghost2 = new THREE.PointLight('#0ff', 2, 3);
+ghost2.castShadow = true;
 const ghost3 = new THREE.PointLight('#ff0', 2, 3);
+ghost3.castShadow = true;
 scene.add(ghost1, ghost2, ghost3);
 
 const camera = new THREE.PerspectiveCamera(
@@ -196,6 +206,7 @@ scene.add(ambientLight);
 
 const moonLight = new THREE.DirectionalLight('#b9d5ff', 0.12);
 moonLight.position.set(4, 5, -2);
+moonLight.castShadow = true;
 gui.add(moonLight, 'intensity').min(0).max(1).step(0.001);
 gui.add(moonLight.position, 'x').min(-5).max(5).step(0.001);
 gui.add(moonLight.position, 'y').min(-5).max(5).step(0.001);
@@ -212,6 +223,7 @@ scene.fog = fog;
 const renderer = new THREE.WebGLRenderer({
   canvas,
 });
+renderer.shadowMap.enabled = true;
 renderer.render(scene, camera);
 renderer.setClearColor('#262837');
 
